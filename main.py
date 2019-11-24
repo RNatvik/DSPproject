@@ -25,8 +25,11 @@ b = num
 a = den
 
 filt = f.Filter(b, a=a)
-xn = [1] * 160
-yn = filt.filter_list(xn)
+step = [1] * 160
+impulse = [1] + [0] * 159
+step_response = filt.filter_list(step)
+filt.clear()
+impulse_response = filt.filter_list(impulse)
 
 mag, phase, W = f.get_frequency_response(b, a=a)
 db = f.amplitude2db(mag)
@@ -36,5 +39,9 @@ plt.plot(W, db)
 plt.show()
 
 plt.figure()
-plt.plot(yn)
+plt.plot(step_response)
+plt.show()
+
+plt.figure()
+plt.plot(impulse_response)
 plt.show()

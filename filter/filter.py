@@ -43,6 +43,14 @@ class Filter:
             y.append(self.filter_value(x))
         return y
 
+    def clear(self):
+        """
+        Clear the filter's stored input and output list
+        :return: None
+        """
+        self.input = [0] * len(self.input)
+        self.output = [0] * len(self.output)
+
     def _shift_list(self, lst: list, val: float):
         lst.pop()
         lst.insert(0, val)
